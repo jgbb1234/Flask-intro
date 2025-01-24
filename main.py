@@ -52,7 +52,7 @@ def add(a, b):
     a = int(a)
     b = int(b)
     result = a + b
-    return jsonify({'result': result})
+    return jsonify(result)
 
       
 @app.route('/subtract/<a>/<b>')
