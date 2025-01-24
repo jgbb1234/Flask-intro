@@ -45,47 +45,39 @@ def get_stats():
       programme_counts[programme] += 1
     else:
       programme_counts[programme] = 1
-  return jsonify({'pref_counts': pref_counts, 'programme_counts': programme_counts})
+  return jsonify(pref_counts, programme_counts)
     
 @app.route('/add/<a>/<b>')
 def add(a, b):
-  try:
     a = int(a)
     b = int(b)
     result = a + b
     return jsonify({'result': result})
-  except ValueError:
-    return jsonify({'error': 'Invalid input'}), 400
+
+      
 @app.route('/subtract/<a>/<b>')
 def subtract(a, b):
-  try:
     a = int(a)
     b = int(b)
     result = a - b
-    return jsonify({'result': result})
-  except ValueError:
-    return jsonify({'error': 'Invalid input'}), 400
+    return jsonify(result)
+
       
 @app.route('/multiply/<a>/<b>')
 def multiply(a, b):
-  try:
     a = int(a)
     b = int(b)
     result = a * b
-    return jsonify({'result': result})
-  except ValueError:
-    return jsonify({'error': 'Invalid input'}), 400
+    return jsonify(result)
+
       
 @app.route('/divide/<a>/<b>')
 def divide(a, b):
-  try:
     a = int(a)
     b = int(b)
     if b == 0:
       return jsonify({'error': 'Cannot divide by zero'}), 400
     result = a / b
-    return jsonify({'result': result})
-  except ValueError:
-    return jsonify({'error': 'Invalid input'}), 400
+    return jsonify(result)
 
 app.run(host='0.0.0.0', port=8080)
