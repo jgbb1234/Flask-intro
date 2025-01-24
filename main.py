@@ -75,8 +75,6 @@ def multiply(a, b):
 def divide(a, b):
     a = int(a)
     b = int(b)
-    if b == 0:
-      return jsonify({'error': 'Cannot divide by zero'}), 400
     result = a / b
     return jsonify(result)
 
